@@ -8,9 +8,10 @@ Takes in a photograph of a certificate and some additional info then add the nam
 
 ## Current Progress
 * [x] Reading and Parsing CSV files of names
+* [x] Writing Text on the Certificates
 
 ## TODO
-* [ ] Writing Text on the Certificates
+* [ ] Make certificate more beautiful
 
 ## Author(s)
 * LordGhostX

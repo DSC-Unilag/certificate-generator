@@ -12,6 +12,6 @@ names = read_csv(filename)
 
 for name in names:
     print("Editing", name, "Certificate")
-    generator(name, template_name)
+    generator(name, template_name, program_name, certification_date)
 
 print("Done!")
