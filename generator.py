@@ -4,19 +4,18 @@ from PIL import ImageFont
 from PIL import ImageDraw
 import os
 
-def generator(name, template, program_name, certification_date):
+def generator(template, data, locations, font=None, font_size=None, font_color=(0, 0, 0)):
     # open the template file
     img = Image.open(template)
     draw = ImageDraw.Draw(img)
-    draw.text((298, 314), name, (0, 0, 0))
-    draw.text((226, 423), program_name, (0, 0, 0))
-    draw.text((435, 627), certification_date, (0, 0, 0))
+
+    for i in range(len(data)):
+        draw.text((locations[i][0], locations[i][1]), data[i], (0, 0, 0))
 
     # Check if output destination exists
     if not os.path.exists("certificates/"):
         os.system("md certificates")
 
+    name = data[0]
     outfilename = "certificates/" + "-".join(name.split()) + "-certificate." + template.split(".")[-1]
     img.save(outfilename)
-
-generator("Solomon Ghost", "img/certificate-sample.jpeg", "PYTHON CLASS", "JULY 2019")
