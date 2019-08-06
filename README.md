@@ -8,6 +8,8 @@ Takes in a photograph of a certificate and some additional info then add the nam
 
 Part of Problem Statement for Unilag DSC Open Hack Week 2019 **#OHW #OHW2019.**
 
+This helps to solve the problem of manually having to write a certificate generator for each certificate that is going to be issued for an event or having a graphics manually design for each participant of the event. The project supports any format of csv containing data to be included in the certificate and support for static data such as date, It also supports any kind of image file to be used as the certificate template.
+
 ## Requirements
 * Python 3
 * matplotlib
