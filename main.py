@@ -14,9 +14,9 @@ def onclick(event):
 
 # Get all necessary inputs from the user
 filename = input("Enter CSV filename: ")
-csv_data, columns = read_csv(filename)
+csv_data, columns, emails = read_csv(filename)
 
-additional_n = int(input("Your data has {} columns; If you have static data to add enter the number (Enter 0 if you have none): ".format(len(columns))))
+additional_n = int(input("Your data has {} columns; If you have static data to add enter the number (Enter 0 if you have none): ".format(len(columns) - 1)))
 additional_data = []
 print("Enter your static data: ")
 for _ in range(additional_n):
@@ -35,8 +35,8 @@ plt.title("Click the {} points on the image".format(len(csv_data[0])))
 plt.xlabel("Exit the editor to start the generation...")
 plt.show()
 
-for data in csv_data:
-    print("Editing", data[0], "Certificate")
-    generator(template_name, data, locations, font=None, font_size=None, font_color=(0, 0, 0))
+for data in range(len(csv_data)):
+    print("Editing", csv_data[data][0], "Certificate")
+    generator(template_name, csv_data[data], locations, emails[data], font=None, font_size=None, font_color=(0, 0, 0))
 
 print("Done!")
