@@ -10,6 +10,7 @@
   <meta name="description" content="">
 
   <title>Image Editor</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -28,7 +29,7 @@
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Template Editor</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Projeect "{}" Editor</strong></h2>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
                     Select points where you want your text to appear, Your CSV has {} points.</h3>
 
@@ -37,7 +38,7 @@
     </div>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/l">free site templates</a></section><section class="cid-rAtfmLFppl" id="image3-3">
+<section class="engine"><a href="https://mobirise.info/r">bootstrap templates</a></section><section class="cid-rAtfmLFppl" id="image3-3">
 
 
 
@@ -66,20 +67,27 @@
         <div class="row py-2 justify-content-center">
             <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
                 <!---Formbuilder Form--->
-                <div class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="eyIPA5lOD62nz/e8cxZTw/SVnz97JcjUHdnuhBGpkyOIVH+b23R7E/cVZeo3CRiwLwnBUoQ9pJLusFAcAS5dGTdsa+/iIkxmz1YxUB8j8QKtaUNZp65xEa9eBS/2YX0k">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                        </div>
-                    </div>
+                <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
                     <div class="dragArea row">
-                        <div class="form-group col" data-for="email">
-                            <input type="email" name="email" placeholder="Number of Static Data" data-form-field="Email" required="required" class="form-control display-7" id="email-form3-5">
+                        <div class="form-group col" data-for="num_static">
+                            <input type="number" name="num_static" placeholder="Number of Static Data" data-form-field="num_static" required="required" class="form-control display-7" id="num_static" style="border-radius: 100px !important;" min="0">
                         </div>
-                        <div class="col-auto input-group-btn"><a href="finish.html"><button type="submit" class="btn btn-primary display-4">APPLY</button></a></div>
+                        <div class="col-auto input-group-btn"><button type="submit" class="btn btn-primary display-4" onclick="add_static()">APPLY</button></div>
                     </div>
-
                 </div><!---Formbuilder Form--->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mbr-section content8 cid-rAvFM09fCL" id="content8-b">
+
+
+
+    <div class="container">
+        <div class="media-container-row title">
+            <div class="col-12 col-md-8" style="border-radius: 100px !important;">
+                <div class="mbr-section-btn align-center" onclick="finish()"><a class="btn btn-primary display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START GENERATING</a></div>
             </div>
         </div>
     </div>
@@ -110,6 +118,7 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/theme/js/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
+  <script src="assets/cert-gen.js"></script>
 
 
 </body>

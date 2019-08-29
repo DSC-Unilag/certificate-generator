@@ -39,27 +39,22 @@
         <div class="row justify-content-center">
             <div class="media-container-column col-lg-8" data-form-type="formoid">
                 <!---Formbuilder Form--->
-                <div class="mbr-form form-with-styler" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="kTMN+30LCZCj15FQO/qHZRvdlWc5xFwfh4K2qnZunnHS4s3cS1gx+vGwTAAYJ4I8Am6vhIYHxG+rVSGB1iercZLuveHJAZZrW5pURpmK+L0t4MDnb/59fo0vzh1fGJvV">
-                    <div class="row">
-                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
-                        </div>
-                    </div>
+                <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
                     <div class="dragArea row">
                         <div class="col-md-6  form-group" data-for="name">
                             <label for="name-form1-0" class="form-control-label mbr-fonts-style display-7">Event Name</label>
-                            <input type="text" name="event" data-form-field="Name" required="required" class="form-control display-7" id="name-form1-0">
+                            <input type="text" name="event" data-form-field="Name" required="required" class="form-control display-7" id="event">
                         </div>
                         <div class="col-md-6  form-group" data-for="email">
                             <label for="email-form1-0" class="form-control-label mbr-fonts-style display-7">Image Template</label>
-                            <input type="file" name="template" data-form-field="Email" required="required" class="form-control display-7" id="email-form1-0">
+                            <input type="file" name="template" data-form-field="Email" required="required" class="form-control display-7" id="template">
                         </div>
 
                         <div data-for="message" class="col-md-12 form-group">
                             <label for="message-form1-0" class="form-control-label mbr-fonts-style display-7">CSV list</label>
-                            <input type="file" name="csv" data-form-field="Message" class="form-control display-7" id="message-form1-0">
+                            <input type="file" name="csv" data-form-field="Message" class="form-control display-7" id="csv">
                         </div>
-                        <div class="col-md-12 input-group-btn align-center"><br><a href="editor.html"><button type="submit" class="btn btn-primary btn-form display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START</button></a></div>
+                        <div class="col-md-12 input-group-btn align-center"><br><button type="submit" class="btn btn-primary btn-form display-4" onclick="start()"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START</button></div>
                     </div>
                 </div><!---Formbuilder Form--->
             </div>
@@ -92,6 +87,7 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/theme/js/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
+  <script src="assets/cert-gen.js"></script>
 
 
 </body>
