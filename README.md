@@ -24,3 +24,5 @@ UI made with [Mobirise](https://mobirise.com/)
 
 ## Author(s)
 * LordGhostX
+
+If you encounter any issues with the app rendering, press **CTRL + f5** then restart.

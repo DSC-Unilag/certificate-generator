@@ -1,113 +1,121 @@
 <!DOCTYPE html>
-<html  >
+<html>
+
 <head>
-  <!-- Site made with Mobirise Website Builder v4.10.3, https://mobirise.com -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Mobirise v4.10.3, mobirise.com">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/png-image-224224-pixels-128x128.png" type="image/x-icon">
-  <meta name="description" content="DSC Unilag Certificate Generator">
+    <!-- Site made with Mobirise Website Builder v4.10.3, https://mobirise.com -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="generator" content="Mobirise v4.10.3, mobirise.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/png-image-224224-pixels-128x128.png" type="image/x-icon">
+    <meta name="description" content="DSC Unilag Certificate Generator">
 
-  <title>DSC Unilag Certificate Generator</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-
-
+    <title>DSC Unilag Certificate Generator</title>
+    <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+    <link rel="stylesheet" href="assets/tether/tether.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/theme/css/style.css">
+    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 
 </head>
+
 <body>
-  <section class="mbr-section form1 cid-rAt8Jnbk6u" id="form1-0">
+    <section class="mbr-section form1 cid-rAt8Jnbk6u" id="form1-0">
 
-
-
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2"><strong>DSC Unilag Certificate Generator</strong></h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Helps generate certificates from a given image template.</h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="title col-12 col-lg-8">
+                    <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2"><strong>DSC Unilag Certificate Generator</strong></h2>
+                    <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">Helps generate certificates from a given image template.</h3>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="media-container-column col-lg-8" data-form-type="formoid">
-                <!---Formbuilder Form--->
-                <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
-                    <div class="dragArea row">
-                        <div class="col-md-6  form-group" data-for="name">
-                            <label for="name-form1-0" class="form-control-label mbr-fonts-style display-7">Event Name</label>
-                            <input type="text" name="event" data-form-field="Name" required="required" class="form-control display-7" id="event">
-                        </div>
-                        <div class="col-md-6  form-group" data-for="email">
-                            <label for="email-form1-0" class="form-control-label mbr-fonts-style display-7">Image Template</label>
-                            <button class="form-control display-7" onclick="getFile('template')">Select Template: <span id="template_path">None Selected</span></button>
-                            <input type="hidden" id="template" required>
-                        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="media-container-column col-lg-8" data-form-type="formoid">
+                    <!---Formbuilder Form--->
+                    <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+                        <div class="dragArea row">
+                            <div class="col-md-6  form-group" data-for="name">
+                                <label for="name-form1-0" class="form-control-label mbr-fonts-style display-7">Event Name</label>
+                                <input type="text" name="event" data-form-field="Name" required="required" class="form-control display-7" id="event" required>
+                            </div>
+                            <div class="col-md-6  form-group" data-for="email">
+                                <label for="email-form1-0" class="form-control-label mbr-fonts-style display-7">Image Template</label>
+                                <button class="form-control display-7" onclick="getFile('template')">Select Template: <span id="template_path">None Selected</span></button>
+                                <input type="hidden" id="template" required>
+                            </div>
 
-                        <div data-for="message" class="col-md-12 form-group">
-                            <label for="message-form1-0" class="form-control-label mbr-fonts-style display-7">CSV File</label>
-                            <button class="form-control display-7" onclick="getFile('csv')">Select CSV File: <span id="csv_path">None Selected</span></button>
-                            <input type="hidden" id="csv" required>
+                            <div data-for="message" class="col-md-12 form-group">
+                                <label for="message-form1-0" class="form-control-label mbr-fonts-style display-7">CSV File</label>
+                                <button class="form-control display-7" onclick="getFile('csv')">Select CSV File: <span id="csv_path">None Selected</span></button>
+                                <input type="hidden" id="csv" required>
+                            </div>
+                            <div class="col-md-12 input-group-btn align-center">
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-form display-4" onclick="start()"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START</button>
+                            </div>
                         </div>
-                        <div class="col-md-12 input-group-btn align-center"><br><button type="submit" class="btn btn-primary btn-form display-4" onclick="start()"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START</button></div>
                     </div>
-                </div><!---Formbuilder Form--->
+                    <!---Formbuilder Form--->
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="engine"><a href="https://mobirise.info/a">online site builder</a></section><section once="footers" class="cid-rAtaI6ripz" id="footer6-1">
+    <section class="engine"><a href="https://mobirise.info/a">online site builder</a></section>
+    <section once="footers" class="cid-rAtaI6ripz" id="footer6-1">
 
-
-
-
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-7"><strong>
+        <div class="container">
+            <div class="media-container-row align-center mbr-white">
+                <div class="col-12">
+                    <p class="mbr-text mb-0 mbr-fonts-style display-7"><strong>
                     <a href="https://github.com/LordGhostX" target="_blank">© Copyright 2019 LordGhostX - All Rights Reserved</a>
                 </strong></p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
+    <script src="assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="assets/popper/popper.min.js"></script>
+    <script src="assets/tether/tether.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+    <script src="assets/formoid/formoid.min.js"></script>
+    <script src="eel.js"></script>
+    <script>
+        async function getFile(type_) {
+            if (type_ == "template") {
+                var dosya_path = await eel.getTemplate()();
+                if (dosya_path) {
+                    document.getElementById("template").value = dosya_path[0];
+                    document.getElementById("template_path").innerHTML = dosya_path[1];
+                }
+            }
+            if (type_ == "csv") {
+                var dosya_path = await eel.getCSV()();
+                if (dosya_path) {
+                    document.getElementById("csv").value = dosya_path[0];
+                    document.getElementById("csv_path").innerHTML = dosya_path[1];
+                }
+            }
+        }
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid/formoid.min.js"></script>
-  <script src="eel.js"></script>
-  <script>
-    async function getFile(type_) {
-      if (type_ == "template") {
-        var dosya_path = await eel.getTemplate()();
-  	     if (dosya_path) {
-           document.getElementById("template").value = dosya_path[0];
-           document.getElementById("template_path").innerHTML = dosya_path[1];
-  	     }
-      }
-      if (type_ == "csv") {
-        var dosya_path = await eel.getCSV()();
-  	     if (dosya_path) {
-           document.getElementById("csv").value = dosya_path[0];
-           document.getElementById("csv_path").innerHTML = dosya_path[1];
-  	     }
-      }
-     }
-  </script>
+        async function start(type_) {
+            var event_name = document.getElementById("event").value;
+            var template = document.getElementById("template").value;
+            var csv = document.getElementById("csv").value;
+            var program_launch = await eel.startProgram(event_name, template, csv)();
+            if (program_launch) {
+                window.location = "editor.html";
+            }
+        }
+    </script>
 
 </body>
+
 </html>

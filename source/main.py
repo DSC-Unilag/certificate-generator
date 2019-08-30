@@ -1,8 +1,9 @@
 import eel
-from os.path import basename
-from tkinter import Tk, filedialog
+from file_handler import getFile
 
 eel.init("UI")
+
+g_event_name, g_template, g_csv = None, None, None
 
 @eel.expose
 def getTemplate():
@@ -12,14 +13,12 @@ def getTemplate():
 def getCSV():
 	return getFile("csv")
 
-def getFile(type_):
-	root = Tk()
-	root.withdraw()
-	root.wm_attributes('-topmost', 1)
-	if type_ == "template":
-		filename =  filedialog.askopenfilename(title="Select Template", filetypes = (("images","*.jpg *.png *.jpeg *.tif *.tiff *.bmp"), ("all files","*.*")))
-	if type_ == "csv":
-		filename =  filedialog.askopenfilename(title="Select CSV File", filetypes = (("CSV file","*.csv"), ("all files","*.*")))
-	return [filename, basename(filename)]
+@eel.expose
+def startProgram(event_name, template, csv):
+	if event_name and template and csv:
+		g_event_name, g_template, g_csv = event_name, template, csv
+		return True
+	else:
+		return False
 
 eel.start("index.html")
