@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="assets/images/png-image-224224-pixels-128x128.png" type="image/x-icon">
   <meta name="description" content="">
 
-  <title>Image Editor</title>
+  <title>DSC Unilag Certificate Generator</title>
   <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
   <link rel="stylesheet" href="assets/tether/tether.min.css">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -29,9 +29,9 @@
     <div class="container">
         <div class="media-container-row">
             <div class="title col-12 col-md-8">
-                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Projeect "{}" Editor</strong></h2>
+                <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Project "<span id="event_name">{}</span>" Editor</strong></h2>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
-                    Select points where you want your text to appear, Your CSV has {} points.</h3>
+                    Select points where you want your text to appear, Your CSV has <span id="num_cols">{}</span> columns.</h3>
 
             </div>
         </div>
@@ -44,7 +44,7 @@
 
     <figure class="mbr-figure container">
             <div class="image-block" style="width: 59%;">
-                <img src="assets/images/certificate-sample-975x675.jpg" width="1400" alt="Mobirise" title="">
+                <img src="assets/images/certificate-sample-975x675.jpg" alt="Certificate" title="" id="template">
 
             </div>
     </figure>
@@ -119,7 +119,16 @@
   <script src="assets/theme/js/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
   <script src="eel.js"></script>
-
+  <script>
+  (async function() {
+    var _ = await eel.setupEditor()();
+    if (_) {
+        document.getElementById("event_name").innerHTML = _[0];
+        document.getElementById("template").src = _[1];
+        document.getElementById("num_cols").innerHTML = _[2].length;
+    }
+  })();
+  </script>
 
 </body>
 </html>
