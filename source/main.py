@@ -1,8 +1,6 @@
 import eel
-from json import dumps, load
-from os import mkdir, getcwd
-from shutil import copy2, rmtree
-from file_handler import getFile, expanduser, join, basename
+from file_handler import getFile
+from program import start, join, loadEditor
 from reader import read_csv
 
 eel.init("UI")
@@ -18,26 +16,14 @@ def getCSV():
 @eel.expose
 def startProgram(event_name, template, csv):
 	if event_name and template and csv:
-		try:
-			mkdir("UI/temp")
-		except:
-			pass
-
-		copy2(template, join("UI/temp", basename(template)))
-
-		with open(join("UI/temp", "dsc-cert-gen.json"), "w") as f:
-			f.write(dumps({"event_name": event_name, "template": join("temp", basename(template)), "csv": csv}))
+		start(event_name, template, csv)
 		return True
 	else:
 		return False
 
 @eel.expose
 def setupEditor():
-	with open(join("UI/temp", "dsc-cert-gen.json")) as f:
-		j = load(f)
-	return [j["event_name"], j["template"], read_csv(j["csv"], only_cols=True)]
-
-def cleanup():
-	rmtree("UI/temp")
+	j = loadEditor()
+	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True)]
 
 eel.start("index.html")

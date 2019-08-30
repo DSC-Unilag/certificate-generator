@@ -1,4 +1,4 @@
-from os.path import basename, expanduser, join
+from os.path import basename
 from tkinter import Tk, filedialog
 
 def getFile(type_):
