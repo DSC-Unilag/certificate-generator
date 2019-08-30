@@ -1,6 +1,7 @@
 import eel
 from file_handler import getFile
-from program import start, join, loadEditor
+from json import load
+from program import start, join, loadEditor, cleanup
 from reader import read_csv
 
 eel.init("UI")
@@ -26,4 +27,11 @@ def setupEditor():
 	j = loadEditor()
 	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True)]
 
-eel.start("index.html")
+@eel.expose
+def finish():
+	with open(join("UI/temp", "dsc-cert-gen.json")) as f:
+		j = load(f)
+	cleanup()
+	return j["event_name"]
+
+eel.start("finish.html")

@@ -32,7 +32,7 @@
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-1"><strong>
                     So, we're all done!</strong><br></h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-2"><strong>Your certificates have been saved to the {} folder</strong></h3>
+                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-2"><strong>Your certificates have been saved to the "<span id="event_name">{}</span>" folder</strong></h3>
 
             </div>
         </div>
@@ -77,6 +77,15 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/theme/js/script.js"></script>
+  <script src="eel.js"></script>
+  <script>
+  (async function() {
+    var _ = await eel.finish()();
+    if (_) {
+        document.getElementById("event_name").innerHTML = _;
+    }
+  })();
+  </script>
 
 
 </body>
