@@ -34,4 +34,4 @@ def finish():
 	cleanup()
 	return j["event_name"]
 
-eel.start("finish.html")
+eel.start("index.html")
