@@ -44,13 +44,13 @@
                             </div>
                             <div class="col-md-6  form-group" data-for="email">
                                 <label for="email-form1-0" class="form-control-label mbr-fonts-style display-7">Image Template</label>
-                                <button class="form-control display-7" onclick="getFile('template')">Select Template: <span id="template_path">None Selected</span></button>
+                                <div class="form-control display-7" onclick="getFile('template')"><button>Select Template</button> <span id="template_path">None Selected</span></div>
                                 <input type="hidden" id="template" required>
                             </div>
 
                             <div data-for="message" class="col-md-12 form-group">
                                 <label for="message-form1-0" class="form-control-label mbr-fonts-style display-7">CSV File</label>
-                                <button class="form-control display-7" onclick="getFile('csv')">Select CSV File: <span id="csv_path">None Selected</span></button>
+                                <div class="form-control display-7" onclick="getFile('csv')"><button>Select CSV File</button> <span id="csv_path">None Selected</span></div>
                                 <input type="hidden" id="csv" required>
                             </div>
                             <div class="col-md-12 input-group-btn align-center">
