@@ -7,10 +7,13 @@ def read_csv(filename):
         csv_raw_data = f.read().strip().split("\n")
 
     csv_data = []
+    emails = []
     for csv in csv_raw_data[1:]:
         csv_data.append(csv.split(","))
+        emails.append(csv_data[-1][-1])
+        del csv_data[-1][-1]
 
     columns = csv_raw_data[0].split(",")
 
     # We are returning a list of all names
-    return csv_data, columns
+    return csv_data, columns, emails
