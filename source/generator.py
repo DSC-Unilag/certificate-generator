@@ -1,6 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 from os import mkdir
-from program import join
+from os.path import join
 from random import randint
 
 def get_dim(path):

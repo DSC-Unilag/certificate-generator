@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html  >
+<head>
+  <!-- Site made with Mobirise Website Builder v4.10.3, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.10.3, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/png-image-224224-pixels-128x128.png" type="image/x-icon">
+  <meta name="description" content="">
+
+  <title>Additonal Options</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+
+</head>
+<body>
+  <section class="mbr-section form1 cid-rAt8Jnbk6u" id="form1-d">
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                    <strong>"<span id="event_name">{}</span>" ADDITIONAL OPTIONS</strong></h2>
+                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                    Additional Options for the certificate generation</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="media-container-column col-lg-8" data-form-type="formoid">
+                <!---Formbuilder Form--->
+                <div class="mbr-form form-with-styler">
+                    <div class="dragArea row">
+                        <div class="col-md-6  form-group" data-for="id_col">
+                            <label for="id_col" class="form-control-label mbr-fonts-style display-7">ID Column</label>
+                            <select class="form-control display-7" id="id_col">
+                                <option value="none">None</option>
+                            </select>
+                            <i>The value that will be used for save certificate files, random numbers will be used if this is set to None</i>
+                        </div>
+                        <div class="col-md-6  form-group" data-for="gen_rand">
+                            <label for="gen_rand" class="form-control-label mbr-fonts-style display-7">Generate Random?</label>
+                            <select class="form-control display-7" id="gen_rand">
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                            <i>This attaches random numbers to the end of every certificate generated</i>
+                        </div>
+                        <div class="col-md-12 form-group" data-for="extension">
+                            <label for="extension" class="form-control-label mbr-fonts-style display-7">Certificate File Extension</label>
+                            <select class="form-control display-7" id="extension">
+                                <option value="none">Default</option>
+                                <option value="png">PNG</option>
+                                <option value="jpg">JPG</option>
+                                <option value="pdf">PDF</option>
+                            </select>
+                            <i>This sets the file extension of the generated certificates, template extension will be used if set to Default</i>
+                        </div>
+                        <div class="col-md-12 input-group-btn align-center"><button type="submit" class="btn btn-primary btn-form display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START GENERATING</button></div>
+                    </div>
+                </div><!---Formbuilder Form--->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="engine"><a href="https://mobirise.info/p">web templates free download</a></section><section once="footers" class="cid-rAtaI6ripz" id="footer6-c">
+
+
+
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7"><strong>
+                    <a href="https://github.com/LordGhostX" target="_blank">© Copyright 2019 LordGhostX - All Rights Reserved</a>
+                </strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
+  <script src="eel.js"></script>
+  <script>
+  (async function() {
+    var _ = await eel.setupOptions()();
+    if (_) {
+        document.getElementById("event_name").innerHTML = _[0];
+        document.getElementById("id_col").innerHTML += _[1];
+    }
+  })();
+  </script>
+
+
+</body>
+</html>

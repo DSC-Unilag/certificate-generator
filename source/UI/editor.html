@@ -43,8 +43,8 @@
 
 
     <figure class="mbr-figure container">
-            <div class="image-block" style="width: 59%; border: 2px solid">
-                <img src="assets/images/certificate-sample-975x675.jpg" alt="Certificate" title="" id="template">
+            <div class="image-block" style="width: 59%;">
+                <img src="assets/images/certificate-sample-975x675.jpg" alt="Certificate" title="" id="template" style="border: 2px solid">
 
             </div>
     </figure>
@@ -87,7 +87,7 @@
     <div class="container">
         <div class="media-container-row title">
             <div class="col-12 col-md-8" style="border-radius: 100px !important;">
-                <div class="mbr-section-btn align-center" onclick="finish()"><a class="btn btn-primary display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START GENERATING</a></div>
+                <div class="mbr-section-btn align-center" onclick="finish()"><a class="btn btn-primary display-4"><span class="mbrib-setting mbr-iconfont mbr-iconfont-btn"></span>PROCEED</a></div>
             </div>
         </div>
     </div>
@@ -131,6 +131,13 @@
         document.getElementById("num_cols").innerHTML = _[2].length;
     }
   })();
+
+  function finish() {
+    var _ = await eel.setupEditor()();
+    if (_) {
+      window.location = "options.html";
+    }
+  }
   </script>
 
 </body>

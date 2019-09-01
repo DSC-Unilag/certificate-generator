@@ -1,7 +1,8 @@
 import eel
 from file_handler import getFile
 from json import load
-from program import start, join, loadEditor, cleanup
+from os.path import join
+from program import start, loadEditor, cleanup, loadOptions
 from reader import read_csv
 
 eel.init("UI")
@@ -26,6 +27,11 @@ def startProgram(event_name, template, csv):
 def setupEditor():
 	j = loadEditor()
 	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True)]
+
+@eel.expose
+def setupOptions():
+	opts = loadOptions()
+	return opts
 
 @eel.expose
 def finish():
