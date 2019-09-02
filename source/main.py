@@ -21,7 +21,7 @@ def startProgram(event_name, template, csv):
 		start(event_name, template, csv)
 		return True
 	else:
-		return False
+		return "incomplete"
 
 @eel.expose
 def setupEditor():

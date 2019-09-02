@@ -119,7 +119,6 @@
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid/formoid.min.js"></script>
   <script src="eel.js"></script>
   <script>
   (async function() {
@@ -127,16 +126,13 @@
     if (_) {
         document.getElementById("event_name").innerHTML = _[0];
         document.getElementById("template").src = _[1][0];
-		document.getElementById("template_style").innerHTML = '#template {width: ' + _[1][1] + 'px; height: ' + _[1][2] + 'px}';
+		    document.getElementById("template_style").innerHTML = '#template {width: ' + _[1][1] + 'px; height: ' + _[1][2] + 'px}';
         document.getElementById("num_cols").innerHTML = _[2].length;
     }
   })();
 
   function finish() {
-    var _ = await eel.setupEditor()();
-    if (_) {
-      window.location = "options.html";
-    }
+    window.location = "options.html";
   }
   </script>
 
