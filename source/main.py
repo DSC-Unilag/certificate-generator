@@ -26,7 +26,7 @@ def startProgram(event_name, template, csv):
 @eel.expose
 def setupEditor():
 	j = loadEditor()
-	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True), j["basename"]]
+	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True), j["template_base"], j["csv_base"]]
 
 @eel.expose
 def setupOptions():

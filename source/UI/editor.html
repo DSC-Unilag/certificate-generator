@@ -58,6 +58,12 @@
                 <div class="mbr-form form-with-styler menu_element" id="img_element">
                   <div class="dragArea row">
                       <div class="form-group col" style="text-align:center">
+                          Template Data Source
+                          <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="img_element_data" disabled>
+                      </div>
+                  </div>
+                  <div class="dragArea row">
+                      <div class="form-group col" style="text-align:center">
                           Template Name
                           <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="img_element_name" disabled>
                       </div>
@@ -168,6 +174,7 @@
         document.getElementById("event_name").innerHTML = _[0];
         document.getElementById("template").src = _[1][0];
         document.getElementById("img_element_name").value = _[3];
+        document.getElementById("img_element_data").value = _[4];
         document.getElementById("img_element_width").value = _[1][1] + "px";
         document.getElementById("img_element_height").value = _[1][2] + "px";
         document.getElementById("num_cols").innerHTML = _[2].length;
