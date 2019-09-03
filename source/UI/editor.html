@@ -32,22 +32,60 @@
                 <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Project "<span id="event_name">{}</span>" Editor</strong></h2>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
                     Select points where you want your text to appear, Your CSV has <span id="num_cols">{}</span> columns.</h3>
+                    <br>
+                    <br>
 
             </div>
         </div>
     </div>
 </section>
 
-<section class="engine"><a href="https://mobirise.info/r">bootstrap templates</a></section><section class="cid-rAtfmLFppl" id="image3-3">
+<section class="engine"><a href="https://mobirise.info/r">bootstrap templates</a></section><section class="header3 cid-rB29fqjk55" id="header3-e" style="background-color:#fff">
 
 
 
-    <figure class="mbr-figure container">
-            <div class="image-block" style="width: 59%;">
-                <img src="assets/images/certificate-sample-975x675.jpg" alt="Certificate" title="" id="template" style="border: 2px solid">
 
+
+    <div class="container">
+        <div class="media-container-row">
+
+
+            <div class="media-content" style="border: 2px solid; flex-basis: 50%; padding-right:10px; padding-left:10px">
+                <h3 class="mbr-section-title pb-3 mbr-fonts-style" align="center">
+                    Template Element Options
+                </h3>
+                <div id="tools_menu">
+                <div class="mbr-form form-with-styler menu_element" id="img_element">
+                  <div class="dragArea row">
+                      <div class="form-group col" style="text-align:center">
+                          Template Name
+                          <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="img_element_name" disabled>
+                      </div>
+                  </div>
+                    <div class="dragArea row">
+                        <div class="form-group col" style="text-align:center">
+                            Template Image Width
+                            <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="img_element_width" disabled>
+                        </div>
+                    </div>
+                    <div class="dragArea row">
+                        <div class="form-group col" style="text-align:center">
+                            Template Image Height
+                            <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="img_element_height" disabled>
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
-    </figure>
+            <div style="padding:10px">
+            </div>
+            <div class="mbr-figure" style="width: 100%;">
+                <img src="assets/images/certificate-sample-975x675.jpg" alt="Mobirise" title="" id="template" style="border: 2px solid">
+                <br><br>
+            </div>
+        </div>
+    </div>
+
 </section>
 
 <section class="mbr-section form3 cid-rAtglAQBAT" id="form3-5">
@@ -70,6 +108,7 @@
                 <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
                     <div class="dragArea row">
                         <div class="form-group col" data-for="num_static">
+
                             <input type="number" name="num_static" placeholder="Number of Static Data" data-form-field="num_static" required="required" class="form-control display-7" id="num_static" style="border-radius: 100px !important;" min="0">
                         </div>
                         <div class="col-auto input-group-btn"><button type="submit" class="btn btn-primary display-4" onclick="add_static()">APPLY</button></div>
@@ -110,9 +149,6 @@
     </div>
 </section>
 
-	<style id="template_style">
-
-	</style>
   <script src="assets/web/assets/jquery/jquery.min.js"></script>
   <script src="assets/popper/popper.min.js"></script>
   <script src="assets/tether/tether.min.js"></script>
@@ -121,12 +157,19 @@
   <script src="assets/theme/js/script.js"></script>
   <script src="eel.js"></script>
   <script>
+  var menu = document.getElementsByClassName("menu_element");
+  for (var i = 0; i < menu.length; i++) {
+    menu[i].hidden = true;
+  }
+  document.getElementById("img_element").hidden = false;
   (async function() {
     var _ = await eel.setupEditor()();
     if (_) {
         document.getElementById("event_name").innerHTML = _[0];
         document.getElementById("template").src = _[1][0];
-		    document.getElementById("template_style").innerHTML = '#template {width: ' + _[1][1] + 'px; height: ' + _[1][2] + 'px}';
+        document.getElementById("img_element_name").value = _[3];
+        document.getElementById("img_element_width").value = _[1][1] + "px";
+        document.getElementById("img_element_height").value = _[1][2] + "px";
         document.getElementById("num_cols").innerHTML = _[2].length;
     }
   })();

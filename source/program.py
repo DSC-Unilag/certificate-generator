@@ -21,6 +21,7 @@ def loadEditor():
     with open(join("UI/temp", "dsc-cert-gen.json")) as f:
         j = load(f)
     j["width"], j["height"] = get_dim(join("UI", j["template"]))
+    j["basename"] = basename(j["template"])
     return j
 
 def loadOptions():
