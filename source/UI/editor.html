@@ -31,7 +31,7 @@
             <div class="title col-12 col-md-8">
                 <h2 class="align-center pb-3 mbr-fonts-style display-2"><strong>Project "<span id="event_name">{}</span>" Editor</strong></h2>
                 <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-5">
-                    Select points where you want your text to appear, Your CSV has <span id="num_cols">{}</span> columns.</h3>
+                    Select points where you want your text to appear, Your CSV has <span id="num_cols">{}</span> column<span id="s">s</span>.</h3>
                     <br>
                     <br>
 
@@ -83,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div style="padding:10px">
+            <div style="padding-right:10px">
             </div>
             <div class="mbr-figure" style="width: 100%;">
                 <img src="assets/images/certificate-sample-975x675.jpg" alt="Mobirise" title="" id="template" style="border: 2px solid">
@@ -178,6 +178,10 @@
         document.getElementById("img_element_width").value = _[1][1] + "px";
         document.getElementById("img_element_height").value = _[1][2] + "px";
         document.getElementById("num_cols").innerHTML = _[2].length;
+
+        if (_[2].length <= 1) {
+          document.getElementById("s").innerHTML = "";
+        }
     }
   })();
 

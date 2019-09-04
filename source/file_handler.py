@@ -8,5 +8,5 @@ def getFile(type_):
 	if type_ == "template":
 		filename =  filedialog.askopenfilename(title="Select Template", filetypes = (("images","*.jpg *.png *.jpeg *.tif *.tiff *.bmp"), ("all files","*.*")))
 	if type_ == "csv":
-		filename =  filedialog.askopenfilename(title="Select CSV File", filetypes = (("CSV file","*.csv"), ("all files","*.*")))
+		filename =  filedialog.askopenfilename(title="Select SpreadSheet File", filetypes = (("spreadsheet","*.csv *.xlsx *.xls"), ("all files","*.*")))
 	return [filename, basename(filename)]
