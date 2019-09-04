@@ -1,9 +1,8 @@
 import eel
-from file_handler import getFile
+from file_handler import getFile, read_data
 from json import load
 from os.path import join
 from program import start, loadEditor, cleanup, loadOptions
-from reader import read_data
 
 eel.init("UI")
 
@@ -40,4 +39,7 @@ def finish():
 	cleanup()
 	return j["event_name"]
 
-eel.start("index.html")
+try:
+	eel.start("index.html", options={"mode": "chrome-app"})
+except:
+	eel.start("index.html", options={"mode": "default"})

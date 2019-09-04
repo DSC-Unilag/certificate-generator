@@ -2,7 +2,7 @@ from os import mkdir
 from shutil import copy2, rmtree
 from os.path import basename, join
 from json import load, dumps
-from reader import read_data
+from file_handler import read_data
 from generator import get_dim
 
 def start(event_name, template, csv):
