@@ -2,7 +2,7 @@ from os import mkdir
 from shutil import copy2, rmtree
 from os.path import basename, join
 from json import load, dumps
-from reader import read_csv
+from reader import read_data
 from generator import get_dim
 
 def start(event_name, template, csv):
@@ -30,7 +30,7 @@ def loadOptions():
         j = load(f)
 
     event_name = j["event_name"]
-    cols = read_csv(j["csv"], only_cols=True)
+    cols = read_data(j["csv"], only_cols=True)
     html = ""
 
     for i, j in enumerate(cols):

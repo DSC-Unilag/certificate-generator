@@ -3,7 +3,7 @@ from file_handler import getFile
 from json import load
 from os.path import join
 from program import start, loadEditor, cleanup, loadOptions
-from reader import read_csv
+from reader import read_data
 
 eel.init("UI")
 
@@ -26,7 +26,7 @@ def startProgram(event_name, template, csv):
 @eel.expose
 def setupEditor():
 	j = loadEditor()
-	return [j["event_name"], [j["template"], j["width"], j["height"]], read_csv(j["csv"], only_cols=True), j["template_base"], j["csv_base"]]
+	return [j["event_name"], [j["template"], j["width"], j["height"]], read_data(j["csv"], only_cols=True), j["template_base"], j["csv_base"]]
 
 @eel.expose
 def setupOptions():

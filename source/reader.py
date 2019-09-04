@@ -1,5 +1,6 @@
 import codecs
 from xlrd import open_workbook
+from os.path import basename
 
 # Reading CSV files
 def read_csv(filename, delimeter=",", only_cols=False):
@@ -32,4 +33,9 @@ def read_excel(filename, only_cols=False):
 
     return values[1:], values[0]
 
-print(read_excel("C:\\Users\\LordGhostX\\Desktop\\Book1.xlsx"))
+def read_data(filename, only_cols=False):
+    if basename(filename).lower().split(".")[-1] == "csv":
+        cols = read_csv(filename, only_cols=only_cols)
+    else:
+        cols = read_excel(filename, only_cols=only_cols)
+    return cols
