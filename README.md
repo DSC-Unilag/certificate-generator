@@ -15,14 +15,7 @@ UI made with [Mobirise](https://mobirise.com/)
 ## Requirements
 * Python 3
 
-## Current Progress
-* [x] Desktop application UI
-* [x] File Submission Handler
-
-## TODO
-* A lot of things
-
 ## Author(s)
 * LordGhostX
 
-If you encounter any issues with the app rendering, press **CTRL + f5** then restart.
+If you encounter any issues with the app rendering, press **CTRL + f5** then restart the program.
