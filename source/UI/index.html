@@ -87,6 +87,11 @@
     <script src="assets/theme/js/script.js"></script>
     <script src="eel.js"></script>
     <script>
+    var r = new URL(window.location).searchParams.get("r");
+    if (id == "true") {
+        window.location = "index.html";
+      }
+
         async function getFile(type_) {
             if (type_ == "template") {
                 var dosya_path = await eel.getTemplate()();

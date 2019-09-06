@@ -55,6 +55,8 @@
                     Template Element Options
                 </h3>
                 <input type="hidden" id="ratio" value="">
+                <input type="hidden" id="t">
+                <input type="hidden" id="elementsDrawn" value="0">
                 <div id="tools_menu">
                 <div class="mbr-form form-with-styler menu_element" id="img_element">
                   <div class="dragArea row">
@@ -86,10 +88,8 @@
             </div>
             <div style="padding-right:10px">
             </div>
-            <div class="mbr-figure" style="width: 100%;">
+            <div class="mbr-figure" style="width: 100%;" id="canvspot">
                 <img src="assets/images/certificate-sample-975x675.jpg" alt="Mobirise" title="" id="template" style="border: 2px solid">
-                <canvas id="myCanvas" style="border: 2px solid"></canvas>
-                <br><br>
             </div>
         </div>
     </div>
@@ -165,11 +165,14 @@
   <script src="assets/theme/js/script.js"></script>
   <script src="eel.js"></script>
   <script>
-  var menu = document.getElementsByClassName("menu_element");
-  for (var i = 0; i < menu.length; i++) {
-    menu[i].hidden = true;
+  function hider(id) {
+    var menu = document.getElementsByClassName("menu_element");
+    for (var i = 0; i < menu.length; i++) {
+      menu[i].hidden = true;
+    }
+    document.getElementById(id).hidden = false;
   }
-  document.getElementById("img_element").hidden = false;
+  hider("img_element");
   (async function() {
     var _ = await eel.setupEditor()();
     if (_) {
@@ -192,14 +195,63 @@
     }
   })();
 
-  function startEditing() {
+  function startupCanvas() {
+    var t = document.getElementById("t");
     var template_element = document.getElementById("template");
-    var canvas_element = document.getElementById("myCanvas");
-    canvas_element.width = template_element.clientWidth;
-    canvas_element.height = template_element.clientHeight;
-    var ctx = canvas_element.getContext("2d");
-    ctx.drawImage(template_element, 0, 0, canvas_element.width, canvas_element.height);
+    t.widthval = template_element.clientWidth;
+    t.heightval = template_element.clientHeight;
     template_element.hidden = true;
+    document.getElementById("canvspot").innerHTML += '<canvas id="myCanvas" style="border: 2px solid" width="' + t.widthval + '" height="' + t.heightval + '"></canvas><br><br>';
+
+
+    document.getElementById("myCanvas").addEventListener("click", function (evt) {
+      var mousePos = getMousePos(document.getElementById("myCanvas"), evt);
+      var candraw = drawElem();
+      if (candraw) {
+        generateCanvas(mousePos.x, mousePos.y);
+      }
+  }, false);
+  }
+
+  //Get Mouse Position
+  function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
+  function generateCanvas(x, y) {
+    var template_element = document.getElementById("template");
+    var img = new Image;
+    img.src = template_element.src;
+    var canvas_element = document.getElementById("myCanvas");
+    var ctx = canvas_element.getContext("2d");
+    ctx.clearRect(0, 0, canvas_element.width, canvas_element.height);
+    ctx.drawImage(img, 0, 0, canvas_element.width, canvas_element.height);
+    var menu = document.getElementsByClassName("menu_element_2");
+
+    for (var i = 0; i < menu.length; i++) {
+      var rect = canvas_element.getBoundingClientRect();
+      //ctx.font = "30px Arial";
+      //ctx.fillText("Sample Text", 10, 50);
+      ctx.fillRect(x, y, 20, 20);
+    }
+  }
+
+  function drawElem() {
+    if (parseInt(document.getElementById("elementsDrawn").value) < parseInt(document.getElementById("num_cols").innerHTML)) {
+      document.getElementById("elementsDrawn").value = parseInt(document.getElementById("elementsDrawn").value) + 1;
+      var id_ = parseInt(document.getElementById("elementsDrawn").value);
+      var id = "img_elem_" + id_;
+
+      var tools = document.getElementById("tools_menu");
+      tools.innerHTML += '<div class="mbr-form form-with-styler menu_element menu_element_2" id="' + id + '"><div class="dragArea row"> <div class="form-group col" style="text-align:center"> Sample Text <input type="text" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="sample_text_' + id_ + '"> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Align Center <select class="form-control display-7" style="border-radius: 100px !important; id="align_center_' + id_ + '"><option value="no">No</option><option value="yes">Yes</option></select> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Font Color <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="font_color_' + id_ + '"> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Font Size <input type="text" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="font_size_' + id_ + '"> </div> </div><div class="dragArea row"> <div class="form-group col" style="text-align:center"> Location X <input min="0" type="number" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="location_x_' + id_ + '"> </div><div class="form-group col" style="text-align:center"> Location Y <input min="0" type="number" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="location_y_' + id_ + '"> </div> </div></div>';
+      hider(id);
+      return true;
+    }
+    return false;
   }
 
   function caller() {
@@ -209,7 +261,8 @@
     }
     else {
       clearInterval(interval);
-      startEditing();
+      startupCanvas();
+      generateCanvas();
     }
   }
   var interval = setInterval(caller, 300);

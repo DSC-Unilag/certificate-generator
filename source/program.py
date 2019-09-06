@@ -10,9 +10,12 @@ def start(event_name, template, csv):
         mkdir("UI/temp")
     except:
         pass
-
-    copy2(template, join("UI/temp", basename(template)))
-    copy2(csv, join("UI/temp", basename(csv)))
+        
+    for x in [(template, basename(template)), (csv, basename(csv))]:
+        try:
+            copy2(x[0], join("UI/temp", x[1]))
+        except:
+            pass
 
     with open(join("UI/temp", "dsc-cert-gen.json"), "w") as f:
         f.write(dumps({"event_name": event_name, "template": join("temp", basename(template)), "csv": join("UI/temp", basename(csv))}))

@@ -1,6 +1,5 @@
 @echo off
 
 echo Running Certificate Generator...
-echo Close the App and Console to stop the process...
 
 python main.py

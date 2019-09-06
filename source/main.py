@@ -40,6 +40,7 @@ def finish():
 	return j["event_name"]
 
 try:
-	eel.start("index.html", options={"mode": "chrome-app"})
-except:
-	eel.start("index.html", options={"mode": "default"})
+	eel.start("editor.html", options={"mode": "chrome-app"})
+except Exception as e:
+	if str(e) == "Can't find Chrome or Chromium installation":
+		eel.start("index.html?r=true", options={"mode": "default"})
