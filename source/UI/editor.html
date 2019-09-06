@@ -54,6 +54,7 @@
                 <h3 class="mbr-section-title pb-3 mbr-fonts-style" align="center">
                     Template Element Options
                 </h3>
+                <input type="hidden" id="ratio" value="">
                 <div id="tools_menu">
                 <div class="mbr-form form-with-styler menu_element" id="img_element">
                   <div class="dragArea row">
@@ -87,6 +88,7 @@
             </div>
             <div class="mbr-figure" style="width: 100%;">
                 <img src="assets/images/certificate-sample-975x675.jpg" alt="Mobirise" title="" id="template" style="border: 2px solid">
+                <canvas id="myCanvas" style="border: 2px solid"></canvas>
                 <br><br>
             </div>
         </div>
@@ -110,7 +112,7 @@
 
         <!--<div class="row py-2 justify-content-center">
             <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                
+
                 <div class="mbr-form form-with-styler" data-form-title="Mobirise Form">
                     <div class="dragArea row">
                         <div class="form-group col" data-for="num_static">
@@ -178,12 +180,39 @@
         document.getElementById("img_element_width").value = _[1][1] + "px";
         document.getElementById("img_element_height").value = _[1][2] + "px";
         document.getElementById("num_cols").innerHTML = _[2].length;
+        document.getElementById("num_cols").valdata = _[2].length;
 
         if (_[2].length <= 1) {
           document.getElementById("s").innerHTML = "";
         }
+
+        var width = document.getElementById("template").clientWidth;
+        var ratio = parseFloat(_[1][1]) / parseFloat(width);
+        document.getElementById("ratio").value = ratio;
     }
   })();
+
+  function startEditing() {
+    var template_element = document.getElementById("template");
+    var canvas_element = document.getElementById("myCanvas");
+    canvas_element.width = template_element.clientWidth;
+    canvas_element.height = template_element.clientHeight;
+    var ctx = canvas_element.getContext("2d");
+    ctx.drawImage(template_element, 0, 0, canvas_element.width, canvas_element.height);
+    template_element.hidden = true;
+  }
+
+  function caller() {
+    if (document.getElementById("ratio").value == "") {
+      clearInterval(interval);
+      interval = setInterval(caller, 300);
+    }
+    else {
+      clearInterval(interval);
+      startEditing();
+    }
+  }
+  var interval = setInterval(caller, 300);
 
   function finish() {
     window.location = "options.html";
