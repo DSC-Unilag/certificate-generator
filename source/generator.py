@@ -62,7 +62,7 @@ def gen_img(options):
             unique_name = str(randint(int(options["id_random_min"]), int(options["id_random_max"])))
         if options["gen_rand"]:
             while True:
-                rand_id = randint(options["id_random_min"], options["id_random_max"])
+                rand_id = randint(int(options["id_random_min"]), int(options["id_random_max"]))
                 unique_name += "-" + str(rand_id)
                 if not exists(join(j["event_name"], unique_name + "." + extension)):
                     break

@@ -211,6 +211,7 @@
     t.heightval = template_element.clientHeight;
     template_element.hidden = true;
     document.getElementById("canvspot").innerHTML += '<canvas id="myCanvas" style="border: 2px solid" width="' + t.widthval + '" height="' + t.heightval + '"></canvas><br><br>';
+    generateCanvas();
 
 
     document.getElementById("myCanvas").addEventListener("click", function (evt) {
