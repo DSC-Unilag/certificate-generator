@@ -39,7 +39,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="media-container-column col-lg-8" data-form-type="formoid">
+            <div class="media-container-column col-lg-8" data-form-type="formoid" id="optscreen">
                 <!---Formbuilder Form--->
                 <div class="mbr-form form-with-styler">
                     <div class="dragArea row">
@@ -53,8 +53,8 @@
                         <div class="col-md-6  form-group" data-for="gen_rand">
                             <label for="gen_rand" class="form-control-label mbr-fonts-style display-7">Generate Random?</label>
                             <select class="form-control display-7" id="gen_rand">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
                             </select>
                             <i>This attaches random numbers to the end of every certificate generated</i>
                         </div>
@@ -78,7 +78,7 @@
                             </select>
                             <i>This sets the file extension of the generated certificates, template extension will be used if set to Default</i>
                         </div>
-                        <div class="col-md-12 input-group-btn align-center"><button type="submit" class="btn btn-primary btn-form display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START GENERATING</button></div>
+                        <div class="col-md-12 input-group-btn align-center"><button onclick="startgen()" type="submit" class="btn btn-primary btn-form display-4"><span class="mbrib-rocket mbr-iconfont mbr-iconfont-btn"></span>START GENERATING</button></div>
                     </div>
                 </div><!---Formbuilder Form--->
             </div>
@@ -119,6 +119,19 @@
         document.getElementById("id_col").innerHTML += _[1];
     }
   })();
+
+  function redirect() {
+    window.location = "finish.html";
+  }
+
+  async function startgen() {
+    var options = {"id_col": document.getElementById("id_col").value, "gen_rand": document.getElementById("gen_rand").value, "id_random_min": document.getElementById("id_random_min").value, "id_random_max": document.getElementById("id_random_max").value, "extension": document.getElementById("extension").value};
+    document.getElementById("optscreen").innerHTML = "<img src='assets/images/loading.gif'>";
+    var _ = await eel.startgen(options)();
+    if (_) {
+      var interval = setInterval(redirect, 3000);
+    }
+  }
   </script>
 
 

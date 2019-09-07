@@ -10,7 +10,7 @@ def start(event_name, template, csv):
         mkdir("UI/temp")
     except:
         pass
-        
+
     for x in [(template, basename(template)), (csv, basename(csv))]:
         try:
             copy2(x[0], join("UI/temp", x[1]))
@@ -19,6 +19,15 @@ def start(event_name, template, csv):
 
     with open(join("UI/temp", "dsc-cert-gen.json"), "w") as f:
         f.write(dumps({"event_name": event_name, "template": join("temp", basename(template)), "csv": join("UI/temp", basename(csv))}))
+
+def saveEditor(trans):
+    with open(join("UI/temp", "dsc-cert-gen.json")) as f:
+        j = load(f)
+
+    j["data"] = trans
+
+    with open(join("UI/temp", "dsc-cert-gen.json"), "w") as f:
+        f.write(dumps(j))
 
 def loadEditor():
     with open(join("UI/temp", "dsc-cert-gen.json")) as f:

@@ -2,7 +2,8 @@ import eel
 from file_handler import getFile, read_data
 from json import load
 from os.path import join
-from program import start, loadEditor, cleanup, loadOptions
+from program import start, loadEditor, cleanup, loadOptions, saveEditor
+from generator import gen_img
 
 eel.init("UI")
 
@@ -34,7 +35,12 @@ def setupOptions():
 
 @eel.expose
 def saveTrans(trans):
-	pass
+	saveEditor(trans)
+	return True
+
+@eel.expose
+def startgen(options):
+	gen_img(options)
 	return True
 
 @eel.expose

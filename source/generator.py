@@ -7,7 +7,7 @@ def get_dim(path):
     img = Image.open(path)
     return img.width, img.height
 
-def gen_img(img_data, img_points, id_, extension=None, allow_random=True, center_width=False, center_height=False):
+def gen_img(options):
     with open(join("UI/temp", "dsc-cert-gen.json")) as f:
         j = load(f)
     try:
