@@ -32,7 +32,7 @@
             <div class="title col-12 col-lg-8">
                 <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
                     <strong>"<span id="event_name">{}</span>" ADDITIONAL OPTIONS</strong></h2>
-                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                <h3 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5" id="loading_text">
                     Additional Options for the certificate generation</h3>
             </div>
         </div>
@@ -127,6 +127,7 @@
   async function startgen() {
     var options = {"id_col": document.getElementById("id_col").value, "gen_rand": document.getElementById("gen_rand").value, "id_random_min": document.getElementById("id_random_min").value, "id_random_max": document.getElementById("id_random_max").value, "extension": document.getElementById("extension").value};
     document.getElementById("optscreen").innerHTML = "<img src='assets/images/loading.gif'>";
+    document.getElementById("loading_text").innerHTML = "Please wait for the certificates...";
     var _ = await eel.startgen(options)();
     if (_) {
       var interval = setInterval(redirect, 3000);

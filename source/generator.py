@@ -2,6 +2,8 @@ from PIL import Image, ImageFont, ImageDraw
 from os import mkdir
 from os.path import join
 from random import randint
+from file_handler import read_data
+from json import load
 
 def get_dim(path):
     img = Image.open(path)
@@ -15,36 +17,51 @@ def gen_img(options):
     except:
         pass
 
-    for data in img_data:
-        img = Image.open(join("UI", j["template"]))
+    data = read_data(j["csv"])
+
+    if options["id_col"] != "none":
+        id_col = 0
+        for i, k in enumerate(data[1]):
+            if k == options["id_col"]:
+                id_col = i
+                break
+    else:
+        id_col = None
+
+    raw_img = Image.open(join("UI", j["template"]))
+    for d in data[0]:
+        img = raw_img.copy()
         draw = ImageDraw.Draw(img)
-        index = 0
-        for point in img_points:
-            font = ImageFont.truetype(point["font_name"], point["font_size"])
-            x, y = point["x"], point["y"]
-            w, h = draw.textsize(data[index], font=font)
+        for i, _ in enumerate(j["data"]):
+            text = str(d[i]).strip()
+            font = ImageFont.truetype("UI\assets\socicon\fonts\ARLRDBD.TTF", int(_["font_size"]))
+
+            x, y = float(_["location_x"]), float(_["location_y"])
+            w, h = draw.textsize(text, font=font)
             W, H = img.size
-            if center_width:
+            if _["align_center"]:
                 x = (W - w) / 2
-            if center_height:
-                y = (H - h) / 2
-            draw.text((x, y), data[index], fill=point["font_color"], font=font)
-            index += 1
 
-        if extension == None:
+            draw.text((x, y), text, fill=str(_["font_color"]), font=font)
+
+        if options["extension"] == "none":
             extension = j["template"].split(".")[-1]
+        else:
+            extension = options["extension"]
 
-        if extension.lower() == "png":
+        if j["template"].split(".")[-1].lower() == "png":
             if len(img.split()) == 4:
                 background = Image.new("RGB", img.size, (255, 255, 255))
                 background.paste(img, mask=img.split()[3])
                 img = background
                 del background
 
-        if allow_random:
-            unique_name = data[id_] + "-" + str(rand(1, 10000))
+        if id_col:
+            unique_name = str(d[id_col]).replace(" ", "-")
         else:
-            unique_name = data[id_]
+            unique_name = str(randint(int(options["id_random_min"]), int(options["id_random_max"])))
+        if options["gen_rand"]:
+            unique_name += "-" + str(randint(int(options["id_random_min"]), int(options["id_random_max"])))
 
         outfilename = join(j["event_name"], unique_name + "." + extension)
         img.save(outfilename)
