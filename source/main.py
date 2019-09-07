@@ -33,6 +33,11 @@ def setupOptions():
 	return opts
 
 @eel.expose
+def saveTrans(trans):
+	pass
+	return True
+
+@eel.expose
 def finish():
 	with open(join("UI/temp", "dsc-cert-gen.json")) as f:
 		j = load(f)
@@ -40,7 +45,7 @@ def finish():
 	return j["event_name"]
 
 try:
-	eel.start("editor.html", options={"mode": "chrome-app"})
+	eel.start("index.html", options={"mode": "chrome-app"})
 except Exception as e:
 	if str(e) == "Can't find Chrome or Chromium installation":
 		eel.start("index.html?r=true", options={"mode": "default"})

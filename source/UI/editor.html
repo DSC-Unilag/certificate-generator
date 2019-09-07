@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                </div><div class="mbr-section-btn align-center" onclick="generateCanvas()"><a class="btn btn-primary display-4"><span class="mbr-iconfont mbrib-save"></span>Save</a></div>
+                </div>
               </div>
             </div>
             <div style="padding-right:10px">
@@ -144,7 +144,7 @@
     <div class="container">
         <div class="media-container-row title">
             <div class="col-12 col-md-8" style="border-radius: 100px !important;">
-                <div class="mbr-section-btn align-center" onclick="finish()"><a class="btn btn-primary display-4"><span class="mbrib-setting mbr-iconfont mbr-iconfont-btn"></span>PROCEED</a></div>
+                <div class="mbr-section-btn align-center"><a class="btn btn-primary display-4" onclick="finish()"><span class="mbrib-setting mbr-iconfont mbr-iconfont-btn"></span>PROCEED</a></div>
             </div>
         </div>
     </div>
@@ -182,7 +182,6 @@
     }
     document.getElementById(id).hidden = false;
   }
-  hider("img_element");
   (async function() {
     var _ = await eel.setupEditor()();
     if (_) {
@@ -260,7 +259,7 @@
       var tools = document.createElement("div");
       tools.id = id;
       tools.className= "mbr-form form-with-styler menu_element menu_element_2";
-      tools.innerHTML = "<div class='mbr-form form-with-styler'><div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Sample Text   <input type='text' class='form-control display-7' style='border-radius: 100px !important;' id='sample_text_" + id_ + "' value='Sample Text'>		</div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Align Center <select class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='align_center_" + id_ + "'> <option value='no'>No</option> <option value='yes'>Yes</option></select></div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Color            <input type='color' class='form-control display-7' style='border-radius: 100px !important;' id='font_color_" + id_ + "' value='#000000'> </div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Size            <input type='text' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='font_size_" + id_ + "' value='20'> </div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Location X <input min='0' type='nummber' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_x_" + id_ + "' value='" + x + "'> </div>        <div class='form-group col' style='text-align:center'> Location Y <input min='0' type='number' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_y_" + id_ + "' value='" + y + "'> </div>    </div></div>";
+      tools.innerHTML = "<div class='mbr-form form-with-styler'><div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Sample Text   <input type='text' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='sample_text_" + id_ + "' value='Sample Text' onchange='generateCanvas()'>		</div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Align Center <select onchange='generateCanvas()' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='align_center_" + id_ + "'> <option value='no'>No</option> <option value='yes'>Yes</option></select></div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Color            <input type='color' class='form-control display-7' onchange='generateCanvas()' style='border-radius: 100px !important;' id='font_color_" + id_ + "' value='#000000'> </div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Size            <input onchange='generateCanvas()' type='number' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='font_size_" + id_ + "' value='50'> </div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center' onchange='generateCanvas()'> Location X <input min='0' type='number' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_x_" + id_ + "' value='" + x + "'> </div>        <div class='form-group col' style='text-align:center'> Location Y <input onchange='generateCanvas()' min='0' type='number' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_y_" + id_ + "' value='" + y + "'> </div>    </div></div>";
       document.getElementById("tools_menu").insertBefore(tools, document.getElementById("tools_menu").childNodes[0]);
       hider(id);
       return true;
@@ -281,9 +280,21 @@
     }
   }
   var interval = setInterval(caller, 300);
+  async function finish() {
+    var menu = document.getElementsByClassName("menu_element_2");
+    if (menu.length < parseInt(document.getElementById("num_cols").innerHTML)) {
+      alert("You haven't filled all points yet!");
+      return;
+    }
+    var elements = [];
+    for (var i = 0; i < menu.length; i++) {
+      elements.push({"align_center": document.getElementById("align_center_" + (i + 1)).value == "yes", "font_color": document.getElementById("font_color_" + (i + 1)).value, "font_size": document.getElementById("font_size_" + (i + 1)).value, "location_x": document.getElementById("location_x_" + (i + 1)).value, "location_y": document.getElementById("location_y_" + (i + 1)).value});
+    }
 
-  function finish() {
-    window.location = "options.html";
+          var paths = await eel.saveTrans(elements)();
+          if (paths) {
+              window.location = "options.html";
+          }
   }
   </script>
 
