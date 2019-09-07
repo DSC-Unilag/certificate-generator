@@ -17,6 +17,16 @@
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
   <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  <style>
+  #test
+{
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+}
+  </style>
 
 
 
@@ -48,8 +58,6 @@
 
     <div class="container">
         <div class="media-container-row">
-
-
             <div class="media-content" style="border: 2px solid; flex-basis: 50%; padding-right:10px; padding-left:10px">
                 <h3 class="mbr-section-title pb-3 mbr-fonts-style" align="center">
                     Template Element Options
@@ -57,6 +65,7 @@
                 <input type="hidden" id="ratio" value="">
                 <input type="hidden" id="t">
                 <input type="hidden" id="elementsDrawn" value="0">
+                <div>
                 <div id="tools_menu">
                 <div class="mbr-form form-with-styler menu_element" id="img_element">
                   <div class="dragArea row">
@@ -84,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                </div><div class="mbr-section-btn align-center" onclick="generateCanvas()"><a class="btn btn-primary display-4"><span class="mbr-iconfont mbrib-save"></span>Save</a></div>
               </div>
             </div>
             <div style="padding-right:10px">
@@ -206,9 +216,9 @@
 
     document.getElementById("myCanvas").addEventListener("click", function (evt) {
       var mousePos = getMousePos(document.getElementById("myCanvas"), evt);
-      var candraw = drawElem();
+      var candraw = drawElem(mousePos.x, mousePos.y);
       if (candraw) {
-        generateCanvas(mousePos.x, mousePos.y);
+        generateCanvas();
       }
   }, false);
   }
@@ -222,7 +232,7 @@
     };
 }
 
-  function generateCanvas(x, y) {
+  function generateCanvas() {
     var template_element = document.getElementById("template");
     var img = new Image;
     img.src = template_element.src;
@@ -233,24 +243,29 @@
     var menu = document.getElementsByClassName("menu_element_2");
 
     for (var i = 0; i < menu.length; i++) {
-      var rect = canvas_element.getBoundingClientRect();
-      //ctx.font = "30px Arial";
-      //ctx.fillText("Sample Text", 10, 50);
-      ctx.fillRect(x, y, 20, 20);
+      ctx.font = (parseFloat(document.getElementById("font_size_" + (i + 1)).value) / parseFloat(document.getElementById("ratio").value)) + "px Arial";
+      ctx.fillStyle = document.getElementById("font_color_" + (i + 1)).value;
+      var x = document.getElementById("location_x_" + (i + 1)).value;
+      var y = document.getElementById("location_y_" + (i + 1)).value;
+      ctx.fillText(document.getElementById("sample_text_" + (i + 1)).value, x, y);
     }
   }
 
-  function drawElem() {
+  function drawElem(x, y) {
     if (parseInt(document.getElementById("elementsDrawn").value) < parseInt(document.getElementById("num_cols").innerHTML)) {
       document.getElementById("elementsDrawn").value = parseInt(document.getElementById("elementsDrawn").value) + 1;
       var id_ = parseInt(document.getElementById("elementsDrawn").value);
       var id = "img_elem_" + id_;
 
-      var tools = document.getElementById("tools_menu");
-      tools.innerHTML += '<div class="mbr-form form-with-styler menu_element menu_element_2" id="' + id + '"><div class="dragArea row"> <div class="form-group col" style="text-align:center"> Sample Text <input type="text" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="sample_text_' + id_ + '"> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Align Center <select class="form-control display-7" style="border-radius: 100px !important; id="align_center_' + id_ + '"><option value="no">No</option><option value="yes">Yes</option></select> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Font Color <input type="text" class="form-control display-7" style="border-radius: 100px !important;" id="font_color_' + id_ + '"> </div> </div> <div class="dragArea row"> <div class="form-group col" style="text-align:center"> Font Size <input type="text" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="font_size_' + id_ + '"> </div> </div><div class="dragArea row"> <div class="form-group col" style="text-align:center"> Location X <input min="0" type="number" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="location_x_' + id_ + '"> </div><div class="form-group col" style="text-align:center"> Location Y <input min="0" type="number" class="form-control display-7" style="border-radius: 100px !important; text-align:center" id="location_y_' + id_ + '"> </div> </div></div>';
+      var tools = document.createElement("div");
+      tools.id = id;
+      tools.className= "mbr-form form-with-styler menu_element menu_element_2";
+      tools.innerHTML = "<div class='mbr-form form-with-styler'><div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Sample Text   <input type='text' class='form-control display-7' style='border-radius: 100px !important;' id='sample_text_" + id_ + "' value='Sample Text'>		</div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Align Center <select class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='align_center_" + id_ + "'> <option value='no'>No</option> <option value='yes'>Yes</option></select></div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Color            <input type='color' class='form-control display-7' style='border-radius: 100px !important;' id='font_color_" + id_ + "' value='#000000'> </div>    </div> <div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Font Size            <input type='text' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='font_size_" + id_ + "' value='20'> </div>    </div>	<div class='dragArea row'>        <div class='form-group col' style='text-align:center'> Location X <input min='0' type='nummber' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_x_" + id_ + "' value='" + x + "'> </div>        <div class='form-group col' style='text-align:center'> Location Y <input min='0' type='number' class='form-control display-7' style='border-radius: 100px !important; text-align:center' id='location_y_" + id_ + "' value='" + y + "'> </div>    </div></div>";
+      document.getElementById("tools_menu").insertBefore(tools, document.getElementById("tools_menu").childNodes[0]);
       hider(id);
       return true;
     }
+    document.getElementById("myCanvas").removeEventListener("click", function (evt) {}, false);
     return false;
   }
 
