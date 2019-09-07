@@ -1,6 +1,6 @@
 from PIL import Image, ImageFont, ImageDraw
 from os import mkdir
-from os.path import join
+from os.path import join, exists
 from random import randint
 from file_handler import read_data
 from json import load
@@ -56,12 +56,15 @@ def gen_img(options):
                 img = background
                 del background
 
-        if id_col:
-            unique_name = str(d[id_col]).replace(" ", "-")
+        if id_col != None:
+            unique_name = str(d[id_col]).strip().replace(" ", "-")
         else:
             unique_name = str(randint(int(options["id_random_min"]), int(options["id_random_max"])))
         if options["gen_rand"]:
-            unique_name += "-" + str(randint(int(options["id_random_min"]), int(options["id_random_max"])))
-
+            while True:
+                rand_id = randint(options["id_random_min"], options["id_random_max"])
+                unique_name += "-" + str(rand_id)
+                if not exists(join(j["event_name"], unique_name + "." + extension)):
+                    break
         outfilename = join(j["event_name"], unique_name + "." + extension)
         img.save(outfilename)
